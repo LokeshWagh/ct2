@@ -1,6 +1,6 @@
 import React from 'react'
-import { displayPartsToString } from 'typescript'
-import typescript from "typescript";
+// import { displayPartsToString } from 'typescript'
+// import typescript from "typescript";
 
 import bgimage from '../../Video/pexel.mp4'
 import imag from '../../Video/cowlogo.png'
