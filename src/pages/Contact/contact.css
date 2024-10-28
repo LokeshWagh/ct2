@@ -1,0 +1,87 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to left , rgb(37, 0, 138),rgb(68, 57, 164),rgb(114, 98, 160)); 
+}
+.Div1{
+    width: 50%;
+    height: 100%;
+    margin-left: -300px;
+    
+}
+.Div2{
+    height: 80;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+.Div1 img{
+    width: 35vw;
+    margin-top: 200px;
+}
+.firstName{
+    border: 2px solid black;
+    margin-top: 6px;
+    border-radius: 10px;
+    padding-left: 9px;
+    background-color: transparent;
+    color: aliceblue;
+}  
+.lastname{
+    border: 2px solid black;
+    margin-top: 6px;
+    border-radius: 10px;
+    padding-left: 9px;
+    background-color: transparent;
+    color: aliceblue;
+}
+.contact{
+    border: 2px solid black;
+    margin-top: 6px;
+    border-radius: 10px;
+    padding-left: 9px;
+    color: aliceblue;
+    background-color: transparent;
+}
+.email{
+    color: black;
+    border: 2px solid black;
+    margin-top: 6px;
+    border-radius: 10px;
+    padding-left: 9px;
+    background-color: transparent;
+    color: white;
+}
+.textArea{
+    color: white;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.submit{
+    width: 200px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-left: 70px;
+    margin-top: 10px;
+    height: 40px;
+  font-size: 20px;
+  padding-top: 3px;
+  color: black;
+
+}
+.submit:hover{
+    background-color: rgb(50, 39, 176);
+    color: white;
+    
+}
+
+
+
+
+
+
