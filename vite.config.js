@@ -6,7 +6,8 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['typescript'], // Marking 'typescript' as external
+      external: ['typescript'],  // Adjust this if needed
     },
   },
+  base: './',  // Ensures correct asset paths
 });

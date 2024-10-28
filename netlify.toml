@@ -1,0 +1,5 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Type = "text/javascript; charset=UTF-8"
+
