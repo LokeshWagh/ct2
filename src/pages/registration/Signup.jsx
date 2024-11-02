@@ -15,6 +15,11 @@ function Signup() {
     const context = useContext(myContext);
     const { loading, setLoading } = context;
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            signup();  // Trigger login when Enter is pressed
+        }
+      };
     const navigate = useNavigate();  // Hook for navigation
 
     const signup = async () => {
@@ -35,7 +40,7 @@ function Signup() {
             };
             const userRef = collection(fireDB, "users");
             await addDoc(userRef, user);
-            toast.success("Signup Successfully");
+            toast.success("Congratulation 😊 Signup Successfully");
             setName("");
             setEmail("");
             setPassword("");
@@ -44,13 +49,13 @@ function Signup() {
             
         } catch (error) {
             console.log(error);
-            toast.error("Signup failed");
+            toast.error("Signup failed 🥹 try again");
             setLoading(false);
         }
     }
 
     return (
-        <div className='flex justify-center items-center h-screen'>
+        <div className='flex justify-center items-center h-screen bg-black'>
             {loading && <Loader />}
             <div className='bg-gray-800 px-10 py-10 rounded-xl'>
                 <div className="">
@@ -61,6 +66,7 @@ function Signup() {
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        onKeyDown={handleKeyDown}  
                         name='name'
                         className='bg-gray-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none'
                         placeholder='Name'
@@ -72,6 +78,7 @@ function Signup() {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        onKeyDown={handleKeyDown}  
                         name='email'
                         className='bg-gray-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none'
                         placeholder='Email'
@@ -82,6 +89,7 @@ function Signup() {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        onKeyDown={handleKeyDown}  
                         className='bg-gray-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none'
                         placeholder='Password'
                     />

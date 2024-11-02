@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: linear-gradient(to left , rgb(37, 0, 138),rgb(68, 57, 164),rgb(114, 98, 160)); 
+    /* background-image: linear-gradient(to left , rgb(37, 0, 138),rgb(68, 57, 164),rgb(114, 98, 160));  */
 }
 .Div1{
     width: 50%;

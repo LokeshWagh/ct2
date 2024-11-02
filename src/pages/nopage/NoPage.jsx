@@ -3,7 +3,7 @@ import './nopage.css'
 import { Link } from 'react-router-dom'
 function NoPage() {
   return (
-    <section class="page_404">
+    <section class="page_404 ">
 	<div class="container">
 		<div class="row">	
 		<div class="col-sm-12 ">

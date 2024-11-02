@@ -1,4 +1,8 @@
-import React from "react";
+
+
+import React, { useContext } from 'react'
+import myContext from '../../context/data/myContext';
+import Layout from '../../components/layout/Layout';
 import { useState } from "react";
 import Img from "../../Video/contactUs.png"
 import { Link } from 'react-router-dom'
@@ -55,10 +59,12 @@ function Contact(){
         alert("please fill the data")
        }
        }
+       const context = useContext(myContext)
+       const { mode } = context;
     return(
         <>
-        <Navbar/>
-        <section className=" main" >
+        <Layout>
+        <section className=" main" style={{ backgroundColor: mode === 'dark' ? '#282c34' : '', color: mode === 'dark' ? 'white' : '', }} >
             <div className="Div1">
                 <img src={Img} alt="Image is not load " />
             </div>
@@ -98,7 +104,7 @@ function Contact(){
                 <input 
                 type="text" 
                 className="contact" 
-                placeholder="Enter Yo"
+                placeholder="Enter Cattle"
                 value={userData.cattle}
                 onChange={postUserData}  
                 name="cattle"/></div>
@@ -120,7 +126,7 @@ function Contact(){
                 <Link to={'/'}><div className="submit bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ... "><button onClick={submitData}>Submit</button></div></Link> 
             </div>
         </section>
-        <Footer/>
+        </Layout>
         </>
     )
 }

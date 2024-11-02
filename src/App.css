@@ -1,0 +1,53 @@
+
+.cName{
+    font-size: 50px;
+}
+.breed{
+    margin: 0 0 0 4px;
+    font-size: 22px;
+}
+.writer{
+    font-weight: 400;
+}
+.Vdetail{
+    font-weight: 500;
+    color: blue;    
+}
+.img{
+    height: 300px;
+    width: 250px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.imgDetail{
+    width: 400px;
+    height: 350px;
+    margin: 10px 0 10px 0;
+    border-radius: 15px;
+    border: 3px solid black;
+}
+.cowDetailName{
+    font-size: 40px;
+    font-weight: 700;
+
+}
+.headingDetail{
+    font-size: 30px;
+    font-weight: 500;
+}
+/* .Page{
+    background: linear-gradient(to bottom,rgb(112, 255, 90),rgb(64, 156, 60),rgb(0, 72, 0));
+} */
+/* .cowDetailName{
+    
+} */
+@media screen and (max-width: 570px){
+    .cow-item{
+       display: flex;
+       flex-wrap: wrap;
+    }
+    
+    .cowDetailDes{
+        margin-right: -40px;
+    }
+}
