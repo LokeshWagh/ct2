@@ -45,7 +45,7 @@ function Allproducts() {
           <div className="container px-5 py-8 md:py-16 mx-auto">
             <div className="lg:w-1/2 w-full mb-6 lg:mb-10 overflow-hidden">
               <h1 
-                className="sm:text-3xl text-2xl font-medium title-font mb-2 overflow-hidden" 
+                className="sm:text-3xl text-2xl font-medium title-font mb-2 overflow-y-hidden" 
                 style={{ color: mode === 'dark' ? 'white' : 'text-gray-900' }}
               >
                 Our Latest Collection
