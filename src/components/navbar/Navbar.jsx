@@ -1,34 +1,35 @@
-import React, { Fragment, useContext, useState } from 'react'
+import React, { Fragment, useContext, useState } from 'react';
 import myContext from '../../context/data/myContext';
-import image from '../../Video/ind-r.jpg'
-import { BsFillCloudSunFill } from 'react-icons/bs'
-import { FiSun } from 'react-icons/fi'
-import { Link,useNavigate } from 'react-router-dom';
-import { Dialog, Transition } from '@headlessui/react'
-import { RxCross2 } from 'react-icons/rx'
+import image from '../../Video/ind-r.jpg';
+import { BsFillCloudSunFill } from 'react-icons/bs';
+import { FiSun } from 'react-icons/fi';
+import { Link, useNavigate } from 'react-router-dom';
+import { Dialog, Transition } from '@headlessui/react';
+import { RxCross2 } from 'react-icons/rx';
 import { useSelector } from 'react-redux';
 
 function Navbar() {
   const navigate = useNavigate();
   const context = useContext(myContext);
-  const {mode, toggleMode} = context;
-
-  const [open, setOpen] = useState(false)
-
+  const { mode, toggleMode } = context;
+  const [open, setOpen] = useState(false);
   const user = JSON.parse(localStorage.getItem('user'));
-
-  // console.log(user.user.email)
+  const cartItems = useSelector((state) => state.cart);
 
   const logout = () => {
     localStorage.clear('user');
-    window.location.href = '/login'
-    //navigate('/login');
-  }
-
-  const cartItems = useSelector((state) => state.cart)
+    window.location.href = '/login';
+  };
 
   return (
-    <div className='bg-white sticky top-0 z-50 border-2 border-neutral-950'>
+    <div
+      className="backdrop-blur-md bg-opacity-50 sticky top-0 z-50"
+      style={{
+        background: 'linear-gradient(180deg, rgb(126 126 126), black, black)',
+        borderRadius: '0 0 10px 10px'
+      }}
+    >
+      {/* Mobile: Hamburger menu and sidebar */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
           <Transition.Child
@@ -53,71 +54,77 @@ function Navbar() {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl" style={{ backgroundColor: mode === 'dark' ? 'rgb(40, 44, 52)' : '', color: mode === 'dark' ? 'white' : '', }}>
+              <Dialog.Panel
+                className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-transparent bg-opacity-50 pb-12 shadow-xl"
+                style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+              >
                 <div className="flex px-4 pb-2 pt-28">
                   <button
                     type="button"
-                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-[#C0C0C0] bg-transparent bg-opacity-50"
+                    style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
                     onClick={() => setOpen(false)}
                   >
-                    <span className="sr-only">Close menu</span>
                     <RxCross2 />
                   </button>
                 </div>
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  
-                  <Link to={'/allproducts'} className="-m-2 block p-2 font-medium text-gray-900" style={{ color: mode === 'dark' ? 'white' : '', }}>
+                  <Link to="/allproducts" className="-m-2 block p-2 font-medium text-white">
                     All Products
                   </Link>
-                  <Link to={'/blogs'} className="-m-2 block p-2 font-medium text-gray-900" style={{ color: mode === 'dark' ? 'white' : '', }}>
+                  <Link to="/blogs" className="-m-2 block p-2 font-medium text-white">
                     Blogs
                   </Link>
-
-                  {user?.user?.email === "lokeshwagh512@gmail.com" ? <div className="flow-root">
-                    <Link to={'/dashboard'} className="-m-2 block p-2 font-medium text-gray-900" style={{ color: mode === 'dark' ? 'white' : '', }}>
-                      admin
-                    </Link>
-                  </div> : ""}
-                  {user ?  <div className="flow-root"> 
-                    <Link to={'/Contactus'} className="-m-2 block p-2 font-medium text-gray-900" style={{ color: mode === 'dark' ? 'white' : '', }}>
-                    SellsProduct
-                  </Link>
-                  </div>  : 
-                  <div className="flow-root">  
-                   <Link to={'/login'}  className="-m-2 block p-2 font-medium text-gray-900" style={{ color: mode === 'dark' ? 'white' : '', }}>
-                      Login
-                    </Link>
-                    </div> }
-                  {user ? <div className="flow-root">
-                    <a onClick={logout} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
-                      Logout
-                    </a>
-                  </div> :
-                  
-                   <div className="flow-root">
-                    <Link to={'/signup'}  className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
-                      Signup
-                    </Link>
-                  </div>
-                  }
+                  {user?.user?.email === 'lokeshwagh512@gmail.com' && (
+                    <div className="flow-root">
+                      <Link to="/dashboard" className="-m-2 block p-2 font-medium text-white">
+                        Admin
+                      </Link>
+                    </div>
+                  )}
+                  {user ? (
+                    <div className="flow-root">
+                      <Link to="/Contactus" className="-m-2 block p-2 font-medium text-white">
+                        SellsProduct
+                      </Link>
+                    </div>
+                  ) : (
+                    <div className="flow-root">
+                      <Link to="/login" className="-m-2 block p-2 font-medium text-white">
+                        Login
+                      </Link>
+                    </div>
+                  )}
+                  {user ? (
+                    <div className="flow-root">
+                      <a onClick={logout} className="-m-2 block p-2 font-medium text-white cursor-pointer">
+                        Logout
+                      </a>
+                    </div>
+                  ) : (
+                    <div className="flow-root">
+                      <Link to="/signup" className="-m-2 block p-2 font-medium text-white cursor-pointer">
+                        Signup
+                      </Link>
+                    </div>
+                  )}
                   <div className="flow-root">
-                    <a href="https://www.linkedin.com/in/lokesh-wagh-bab067228/" className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer">
-                    <img
+                    <a
+                      href="https://www.linkedin.com/in/lokesh-wagh-bab067228/"
+                      className="-m-2 block p-2 font-medium text-white cursor-pointer"
+                    >
+                      <img
                         className="inline-block w-10 h-10 rounded-full"
                         src="https://images.unsplash.com/photo-1442328166075-47fe7153c128?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Owner" /></a>
+                        alt="Owner"
+                      />
+                    </a>
                   </div>
                 </div>
-{/*  */}
                 <div className="border-t border-gray-200 px-4 py-6">
                   <a href="https://quizonhistoryofindia.netlify.app/" className="-m-2 flex items-center p-2">
-                    <img
-                      src={image}
-                      alt=" 🙂 "
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-base font-medium text-gray-900" style={{ color: mode === 'dark' ? 'white' : '', }}>INDIA</span>
-                    {/* <span className="sr-only">, change currency</span> */}
+                    <img src={image} alt="India" className="block h-auto w-5 flex-shrink-0" />
+                    <span className="ml-3 block text-base font-medium text-white">INDIA</span>
                   </a>
                 </div>
               </Dialog.Panel>
@@ -126,123 +133,137 @@ function Navbar() {
         </Dialog>
       </Transition.Root>
 
-      <header className="relative bg-white">
-        {/* <p className="flex h-10 items-center justify-center bg-pink-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8" 
-        style={{ backgroundColor: mode === 'dark' ? 'rgb(62 64 66)' : '', color: mode === 'dark' ? 'white' : '', }}>
-          Get free delivery on orders over ₹300
-        </p> 
-        */}
-      {/* for the desktop */}
-        <nav aria-label="Top" className="bg-gray-100 px-4 sm:px-6 lg:px-8 shadow-xl " style={{ backgroundColor: mode === 'dark' ? '#282c34' : '', color: mode === 'dark' ? 'white' : '', }}>
-          <div className="">
-            <div className="flex h-16 items-center">
-              <button
-                type="button"
-                className="rounded-md bg-white p-2 text-gray-400 lg:hidden"
-                onClick={() => setOpen(true)} style={{ backgroundColor: mode === 'dark' ? 'rgb(80 82 87)' : '', color: mode === 'dark' ? 'white' : '', }}
+      {/* Shared: Header wrapper */}
+      <header className="relative bg-transparent bg-opacity-50">
+        <nav
+          aria-label="Top"
+          className="bg-transparent bg-opacity-50 px-4 sm:px-6 lg:px-8 shadow-xl"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+        >
+          <div className="flex h-16 items-center">
+            {/* Mobile: Hamburger button */}
+            <button
+              type="button"
+              className="rounded-md bg-transparent bg-opacity-50 p-2 text-[#C0C0C0] lg:hidden"
+              style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+              onClick={() => setOpen(true)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6"
               >
-                <span className="sr-only">Open menu</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
 
-              </button>
+            {/* Shared: Logo */}
+            <div className="ml-4 flex lg:ml-0">
+              <Link to="/" className="flex">
+                <h1 className="text-2xl lg:text-3xl font-bold text-white px-2 py-1 rounded">
+                  Live_Stock
+                </h1>
+              </Link>
+            </div>
 
-              {/* Logo */}
-              <div className="ml-4 flex lg:ml-0">
-                <Link to={'/'} className='flex'>
-                  <div className="flex ">
-                    <Link to={"/"}>
-                    <h1 className=' text-2xl font-bold text-black  px-2 py-1 rounded' style={{ color: mode === 'dark' ? 'white' : '', }}>Live_Stock</h1></Link>
-                  </div>
+            {/* Shared: Right-side content */}
+            <div className="ml-auto flex items-center">
+              {/* Desktop: Navigation links */}
+              <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                {user ? (
+                  <Link to="/Home" className="text-sm lg:text-lg font-medium text-white" />
+                ) : (
+                  <Link to="/signup" className="text-sm lg:text-lg font-medium text-white">
+                    Signup
+                  </Link>
+                )}
+                <Link to="/allproducts" className="text-sm lg:text-lg font-medium text-white">
+                  All Products
                 </Link>
+                {user ? (
+                  <div className="flow-root">
+                    <Link to="/Contactus" className="text-sm lg:text-lg font-medium text-white">
+                      SellsProduct
+                    </Link>
+                  </div>
+                ) : (
+                  <Link to="/login" className="text-sm lg:text-lg font-medium text-white">
+                    Login
+                  </Link>
+                )}
+                <Link to="/blogs" className="text-sm lg:text-lg font-medium text-white">
+                  Blogs
+                </Link>
+                {user?.user?.email === 'lokeshwagh512@gmail.com' && (
+                  <Link to="/dashboard" className="text-sm lg:text-lg font-medium text-white">
+                    Admin
+                  </Link>
+                )}
+                {user && (
+                  <a onClick={logout} className="text-sm lg:text-lg font-medium text-white cursor-pointer">
+                    Logout
+                  </a>
+                )}
               </div>
 
-              <div className="ml-auto flex items-center">
-                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+              {/* Desktop: INDIA link */}
+              <div className="hidden lg:ml-8 lg:flex">
+                <a href="https://quizonhistoryofindia.netlify.app/" className="flex items-center text-white">
+                  <img src={image} alt="" className="block h-auto w-5 flex-shrink-0" />
+                  <span className="ml-3 block text-base lg:text-lg font-medium">INDIA</span>
+                </a>
+              </div>
 
-                {user ?  <Link to={'/Home'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
-                  </Link> : <Link to={'/signup'}  className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
-                      Signup
-                  </Link>}
-                  <Link to={'/allproducts'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
-                    All Products
-                  </Link>
+              {/* Desktop: LinkedIn profile */}
+              <div className="hidden lg:ml-8 lg:flex">
+                <a href="https://www.linkedin.com/in/lokesh-wagh-bab067228/" className="flex items-center text-white">
+                  <img
+                    className="inline-block w-10 h-10 rounded-full"
+                    src="https://images.unsplash.com/photo-1442328166075-47fe7153c128?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Lokesh"
+                  />
+                </a>
+              </div>
 
+              {/* Shared: Mode toggle button (functionality remains but no color change) */}
+              <div className="flex lg:ml-6">
+                <button onClick={toggleMode}>
+                  {mode === 'light' ? (
+                    <FiSun size={30} color="#FFD700" />
+                  ) : (
+                    <BsFillCloudSunFill size={30} color="#FFD700" />
+                  )}
+                </button>
+              </div>
 
-                  {user ?  <Link to={'/Contactus'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
-                    SellsProduct
-                  </Link> :   <Link to={'/login'}  className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
-                      Login
-                    </Link>}
-
-                 
-                  <Link to={'/blogs'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
-                    Blogs
-                  </Link>
-                   
-                 
-                   
-
-                   {user?.user?.email === 'lokeshwagh512@gmail.com' ? 
-                   <Link to={'/dashboard'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
-                    Admin
-                  </Link> : ""}
-                  
-                
-                 {user ?  <a onClick={logout} className="text-sm font-medium text-gray-700 cursor-pointer  " style={{ color: mode === 'dark' ? 'white' : '', }}>
-                    Logout
-                  </a> : ""}
-                </div>
-
-                <div className="hidden lg:ml-8 lg:flex">
-                  <a href="https://quizonhistoryofindia.netlify.app/" className="flex items-center text-gray-700 ">
-                    <img
-                      src={image}
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
+              {/* Shared: Cart link */}
+              <div className="ml-4 flow-root lg:ml-6 overflow-hidden">
+                <Link to="/cart" className="group -m-2 flex items-center p-2" style={{ color: 'white' }}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6 "
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
                     />
-                    <span className="ml-3 block text-sm font-medium" style={{ color: mode === 'dark' ? 'white' : '', }}>INDIA</span>
-                  </a>
-                </div>
-                <div className="hidden lg:ml-8 lg:flex">
-                  <a href="https://www.linkedin.com/in/lokesh-wagh-bab067228/" className="flex items-center text-gray-700 ">
-                    <img
-                      className="inline-block w-10 h-10 rounded-full"
-                      // login image
-                      src="https://images.unsplash.com/photo-1442328166075-47fe7153c128?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="Lokesh" />
-                  </a>
-                </div>
-
-                <div className="flex lg:ml-6">
-                  <button className='' onClick={toggleMode}>
-                    {mode === 'light' ?
-                      (<FiSun className='' size={30} />
-                      ) : 'dark' ?
-                        (<BsFillCloudSunFill size={30} />
-                        ) : ''}
-                  </button>
-                </div>
-
-                {/* Cart */}
-                <div className="ml-4 flow-root lg:ml-6">
-                  <Link to={'/cart'} className="group -m-2 flex items-center p-2" style={{ color: mode === 'dark' ? 'white' : '', }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                    </svg>
-
-                    {/* <span className="ml-2 text-sm font-medium text-gray-700 group-" style={{ color: mode === 'dark' ? 'white' : '', }}>{cartItems.length}</span>
-                    <span className="sr-only">items in cart, view bag</span> */}
-                  </Link>
-                </div>
+                  </svg>
+                </Link>
               </div>
             </div>
           </div>
         </nav>
       </header>
     </div>
-  )
+  );
 }
 
 export default Navbar;

@@ -1,0 +1,26 @@
+.headingTestimonial{
+    animation: moveUpDown 2s ease-in-out infinite;
+    overflow-y: hidden;
+}
+@keyframes moveUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }@keyframes dropAnimation {
+    0% {
+        transform: translateY(1px);
+        opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    0% {
+      transform: translateY(1px);
+      opacity: 0;
+      /* opacity: 1; */
+    }
+  }
