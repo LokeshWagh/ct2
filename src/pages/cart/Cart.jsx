@@ -206,7 +206,7 @@ function Cart() {
                                     </button>
                                 </a>
                             </center>
-                            <center>
+                            {/* <center>
                                 <a href="mailto:lokeshwagh@gmail.com">
                                     <button
                                         className="flex items-center justify-center w-72 h-10 rounded-lg border-4 border-neutral-950 transition-all duration-300"
@@ -220,7 +220,7 @@ function Cart() {
                                         Buy Now <IoCashOutline className="ml-2" />
                                     </button>
                                 </a>
-                            </center>
+                            </center> */}
                         </div>
                     </div>
                 </div>
