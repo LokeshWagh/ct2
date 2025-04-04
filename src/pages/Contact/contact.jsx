@@ -1,133 +1,83 @@
-
-
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react';
 import myContext from '../../context/data/myContext';
 import Layout from '../../components/layout/Layout';
-import { useState } from "react";
-import Img from "../../Video/contactUs.png"
-import { Link } from 'react-router-dom'
-import "./contact.css"
+import Img from "../../Video/contactUs.png";
+import { Link } from 'react-router-dom';
+import "./contact.css";
 import { toast } from "react-toastify";
-import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/footer/Footer";
-function Contact(){
-    const [userData, setUserData]=useState({
-        firstName:"",
-        address:"",
-        contact:"",
-        email:"",
-        cattle:"",
-        massege:""
+
+function Contact() {
+    const [userData, setUserData] = useState({
+        firstName: "",
+        address: "",
+        contact: "",
+        email: "",
+        cattle: "",
+        massege: ""
     });
 
-    let name,value;
-    const postUserData =(event)=>{
-      name=event.target.name;
-      value=event.target.value;
+    const postUserData = (event) => {
+        const { name, value } = event.target;
+        setUserData({ ...userData, [name]: value });
+    };
 
-      setUserData({...userData,[name]:value});
-     };
-     const {firstName,address,contact,email}=userData;
-     const submitData =async(event )=>{
+    const { firstName, address, contact, email, massege } = userData;
+
+    const submitData = async (event) => {
         event.preventDefault();
-        const res= await fetch("https://sellsproducts-9c8f5-default-rtdb.firebaseio.com/saleContact.json",
-         {
-        method :"POST",
-        headers : {
-            "content-Type":"application/json",
-        },
-        body : JSON.stringify({
-            firstName,address,contact,email,massege
-        })
-       });
-       if(firstName===""||address===""||contact===""||email===""){
-        return toast.error("Please fill the All field")
-       }
-       if(res){
-        setUserData({
-            firstName:"",
-            address:"",
-            contact:"",
-            email:"",
-            cattle :"",
-            massege:""
-        }) ,
-        toast.success("Data is Submited");
-       }
-        
-       else{
-        alert("please fill the data")
-       }
-       }
-       const context = useContext(myContext)
-       const { mode } = context;
-    return(
-        <>
-        <Layout>
-        <section className=" main" style={{ backgroundColor: mode === 'dark' ? '#282c34' : '', color: mode === 'dark' ? 'white' : '', }} >
-            <div className="Div1">
-                <img src={Img} alt="Image is not load " />
-            </div>
-            <div className="Div2 text-emerald-400">
-                <center className=" text-amber-700 ">Contact Us</center>
-                <form  method="POST">
-                <div className="my-2.5 ">
-                <label htmlFor="First Name">First Name :</label>
-                <input 
-                type="text"
-                placeholder="Enter Your first Name"
-                value={userData.firstName}
-                onChange={postUserData}
-                name="firstName" 
-                className="firstName"/>
-                </div>
-                <div className="my-2.5">
-                <label htmlFor="address">Address : </label>
-                <input type="text"
-                className="lastname" 
-                placeholder="Enter Your Address"
-                value={userData.address}
-                onChange={postUserData}  
-                name="address"/></div>
-                <div className="my-2.5">
-                <label htmlFor="contact">contact Number :</label>
-                <input 
-                type="text" 
-                className="contact" 
-                placeholder="Enter Your Contact Number"
-                value={userData.contact}
-                onChange={postUserData}  
-                name="contact"/></div>
-                
-                <div className="my-2.5">
-                <label htmlFor="cattle">Cattle :</label>
-                <input 
-                type="text" 
-                className="contact" 
-                placeholder="Enter Cattle"
-                value={userData.cattle}
-                onChange={postUserData}  
-                name="cattle"/></div>
+        if (firstName === "" || address === "" || contact === "" || email === "") {
+            return toast.error("Please fill in all fields");
+        }
 
-                <div className="my-2.5">
-                <label htmlFor="email">Email :</label>
-                <input type="text" 
-                className="email" 
-                placeholder="Enter Your Email"
-                value={userData.email}
-                onChange={postUserData}  
-                name="email"/></div>
-                
-                <div className="my-2.5">
-                <label htmlFor="massege">Massege :</label>
-                <textarea name="massege" className="textArea" id="" cols="20" rows="5" placeholder="Enter your massege" value={userData.massege} onChange={postUserData} ></textarea></div>
-                
-                </form>
-                <Link to={'/'}><div className="submit bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ... "><button onClick={submitData}>Submit</button></div></Link> 
-            </div>
-        </section>
+        const res = await fetch("https://sellsproducts-9c8f5-default-rtdb.firebaseio.com/saleContact.json", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                firstName, address, contact, email, massege
+            })
+        });
+
+        if (res) {
+            setUserData({
+                firstName: "",
+                address: "",
+                contact: "",
+                email: "",
+                cattle: "",
+                massege: ""
+            });
+            toast.success("Data Submitted Successfully");
+        } else {
+            alert("Please fill in the data");
+        }
+    };
+
+    const context = useContext(myContext);
+    const { mode } = context;
+
+    return (
+        <Layout>
+            <section className={`flex flex-col md:flex-row items-center justify-center p-8 ${mode === 'dark' ? 'bg-black text-white' : 'bg-gray-100 text-black'}`}>
+                <div className="w-full md:w-1/2 flex justify-center">
+                    <img src={Img} alt="Contact Us" className="w-3/4 rounded-lg shadow-lg" />
+                </div>
+                <div className="w-full md:w-1/2 bg-white shadow-md rounded-lg p-8 mt-6 md:mt-0">
+                    <h2 className="text-2xl font-bold text-center text-emerald-500 mb-4">Contact Us</h2>
+                    <form onSubmit={submitData} className="space-y-4">
+                        <input type="text" name="firstName" value={userData.firstName} onChange={postUserData} placeholder="First Name" className="w-full p-2 border rounded" />
+                        <input type="text" name="address" value={userData.address} onChange={postUserData} placeholder="Address" className="w-full p-2 border rounded" />
+                        <input type="text" name="contact" value={userData.contact} onChange={postUserData} placeholder="Contact Number" className="w-full p-2 border rounded" />
+                        <input type="text" name="cattle" value={userData.cattle} onChange={postUserData} placeholder="Cattle" className="w-full p-2 border rounded" />
+                        <input type="email" name="email" value={userData.email} onChange={postUserData} placeholder="Email" className="w-full p-2 border rounded" />
+                        <textarea name="massege" value={userData.massege} onChange={postUserData} placeholder="Message" className="w-full p-2 border rounded h-24"></textarea>
+                        <button type="submit" className="w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-white p-3 rounded-lg">Submit</button>
+                    </form>
+                </div>
+            </section>
         </Layout>
-        </>
-    )
+    );
 }
-export default  Contact;
+
+export default Contact;
