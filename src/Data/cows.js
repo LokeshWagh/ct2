@@ -58,16 +58,6 @@ export const cows = [
       writer: 'Lokesh Wagh',
       description: 'A Sahiwal cow, known for her gentle nature and high-quality milk.',
       details: 'Lakshmi is a 4-year-old Sahiwal cow, one of India’s best dairy breeds originating from Punjab. Known for her calm temperament, Lakshmi produces milk with high butterfat content, making it ideal for ghee and other dairy products. She’s healthy, strong, and contributes significantly to milk production.'
-    },
-    {
-      id: 11,
-      name: 'Radha',
-      subTitle: 'Kankrej',
-      age: 16,
-      image: 'https://pasuthai.com/wp-content/uploads/2022/08/Kankrej-cow.jpeg',
-      writer: 'Lokesh Wagh',
-      description: 'A robust Kankrej cow, known for her resilience and work capacity.',
-      details: 'Radha is a 6-year-old Kankrej cow, native to Gujarat and Rajasthan. This breed is known for its strength and resilience, often used for both milk production and draught work. Radha is healthy and well-suited to the climate, producing moderate milk with good nutritional quality.'
     }
     
     // Add more cows here

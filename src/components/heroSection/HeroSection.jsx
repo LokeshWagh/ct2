@@ -579,10 +579,8 @@ function HeroSection() {
       
       {/* <center className="absolute inset-0 flex flex-col items-center justify-center text-white"> */}
       
-        <img src={imag1} alt="Logo" className="tiger"/>
+        <img src={imag1} alt="Logo" className="mainImg"/>
         {/* <h1 className="text-6xl">Live_Stock</h1> */}
-      
-      <img src={img3} alt="Logo" className=" img1 h-14" style={{ width: "8%", position: "absolute",top:0, right: 0, height: "30%",zIndex:"1" }}/>
       <span className="dot"></span>
       <div 
       className="secDiv" 

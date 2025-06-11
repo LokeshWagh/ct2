@@ -57,7 +57,7 @@ function DashboardTab() {
                         {/* product  */}
                         <TabPanel>
                             <div className='  px-4 md:px-0 mb-16'>
-                                <h1 className=' text-center mb-5 text-3xl font-semibold underline' style={{ color: mode === 'dark' ? 'white' : '' }}>Product Details</h1>
+                                <h1 className=' text-center mb-5 text-3xl font-semibold underline overflow-hidden' style={{ color: mode === 'dark' ? 'white' : '' }}>Product Details</h1>
                                 <div className=" flex justify-end">
                                     <button
                                         onClick={add}

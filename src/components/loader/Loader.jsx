@@ -5,11 +5,11 @@ function Loader() {
     <>
     
              <RotateLoader
-               color="#00d4ff"
-               margin={80}
-               size={30}
-               className='m-2'
+                  color="#00d4ff"
+                  size={30}
+                  className='m-2' // Tailwind margin still works here
              />
+
    
     </>
     // <div>

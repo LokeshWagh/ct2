@@ -10,7 +10,7 @@ function Dashboard() {
   return (
     <Layout>
         <section className="text-gray-600  body-font mt-10 mb-10">
-            <div className="container  px-5 mb-10">
+            {/* <div className="container  px-5 mb-10">
                 <div className="flex flex-wrap  -m-4 text-center ">
                     <div className="container mx-auto p-4 md:w-1/4 sm:w-1/2 w-full">
                     
@@ -34,7 +34,7 @@ function Dashboard() {
                     </div>
                     
                 </div>
-            </div>
+            </div> */}
             <DashboardTab/>
         </section>
        

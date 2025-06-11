@@ -63,7 +63,7 @@ function Contact() {
                 <div className="w-full md:w-1/2 flex justify-center">
                     <img src={Img} alt="Contact Us" className="w-3/4 rounded-lg shadow-lg" />
                 </div>
-                <div className="w-full md:w-1/2 bg-white shadow-md rounded-lg p-8 mt-6 md:mt-0">
+                <div className="w-full md:w-1/2 bg-white text-black shadow-md rounded-lg p-8 mt-6 md:mt-0">
                     <h2 className="text-2xl font-bold text-center text-emerald-500 mb-4">Contact Us</h2>
                     <form onSubmit={submitData} className="space-y-4">
                         <input type="text" name="firstName" value={userData.firstName} onChange={postUserData} placeholder="First Name" className="w-full p-2 border rounded" />

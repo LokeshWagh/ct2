@@ -31,7 +31,7 @@ function Testimonial() {
                                 </p>
                                 <span className="inline-block h-1 w-10 rounded bg-pink-500 mt-6 mb-4" />
                                 <h2
-                                    style={{ color: mode === 'dark' ? 'black' : '#ff4162' }}
+                                    style={{ color: mode === 'dark' ? '#ff4162' : '#ff4162' }}
                                     className="font-medium title-font tracking-wider text-sm uppercase"
                                 >
                                     Lokesh Wagh
@@ -57,7 +57,7 @@ function Testimonial() {
                                 </p>
                                 <span className="inline-block h-1 w-10 rounded bg-pink-500 mt-6 mb-4" />
                                 <h2
-                                    style={{ color: mode === 'dark' ? 'black' : '#ff4162' }}
+                                    style={{ color: mode === 'dark' ? '#ff4162' : '#ff4162' }}
                                     className="font-medium title-font tracking-wider text-sm uppercase"
                                 >
                                     Rajeshwari
@@ -83,7 +83,7 @@ function Testimonial() {
                                 </p>
                                 <span className="inline-block h-1 w-10 rounded bg-pink-500 mt-6 mb-4" />
                                 <h2
-                                    style={{ color: mode === 'dark' ? 'black' : '#ff4162' }}
+                                    style={{ color: mode === 'dark' ? '#ff4162' : '#ff4162' }}
                                     className="font-medium title-font tracking-wider text-sm uppercase"
                                 >
                                     Rajesh Bhau
