@@ -1,98 +1,71 @@
 import React, { useContext } from 'react';
 import myContext from '../../context/data/myContext';
-import imag from '../../Video/lok.jpg';
-import "./Testimonial.css"
+import { testimonials } from '../../Data/testimonial.js';
+import { FaStar } from 'react-icons/fa';
+import "./Testimonial.css";
+
 function Testimonial() {
     const context = useContext(myContext);
-    const { mode } = context;
+    // Removed 'mode' as it's no longer used
+
+    // Function to render star rating
+    const renderStars = (rating) => {
+        return [...Array(5)].map((_, index) => (
+            <FaStar
+                key={index}
+                className={`w-4 h-4 ${
+                    index < rating ? 'text-yellow-400' : 'text-gray-600'
+                }`}
+            />
+        ));
+    };
 
     return (
         <div>
-            <section className='mainDiv relative text-white'>
+            <section className='mainDiv relative text-white bg-black min-h-screen py-16'>
                 <div className="container mx-auto px-5 py-10">
-                    <h1 className='headingTestimonial text-center text-3xl font-bold'>
-                        Testimonial
+                    <h1 className='headingTestimonial text-center text-4xl font-bold mb-4 overflow-hidden'>
+                        Testimonials
                     </h1>
                     <h2 className='text-center text-2xl font-semibold mb-10'>
                         What our <span className='text-pink-500'>customers</span> are saying
                     </h2>
-                    <div className="flex flex-wrap -m-4">
-                        <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
-                            <div className="h-full text-center">
-                                <img
-                                    alt="testimonial"
-                                    className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                                    src={imag}
-                                />
-                                <p className="leading-relaxed">
-                                    The product listings are informative, showcasing the diversity of available cattle. 
-                                    Streamlined checkout and responsive design enhance user experience. 
-                                    Consider integrating customer testimonials to build trust and credibility.
-                                </p>
-                                <span className="inline-block h-1 w-10 rounded bg-pink-500 mt-6 mb-4" />
-                                <h2
-                                    style={{ color: mode === 'dark' ? '#ff4162' : '#ff4162' }}
-                                    className="font-medium title-font tracking-wider text-sm uppercase"
-                                >
-                                    Lokesh Wagh
-                                </h2>
-                                <p style={{ color: mode === 'dark' ? 'white' : 'gray' }} className="text-gray-500">
-                                    Senior Product Designer
-                                </p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {testimonials.map((testimonial, index) => (
+                            <div 
+                                key={testimonial.id} 
+                                className="p-6 animate-fadeIn"
+                                style={{ animationDelay: `${index * 0.2}s` }}
+                            >
+                                <div className="h-full text-center bg-gradient-to-b from-gray-800 to-black rounded-xl shadow-2xl p-6  hover:shadow-[0_0_15px_rgba(255,165,0,0.5)]">
+                                    <img
+                                        alt={`${testimonial.name} testimonial`}
+                                        className="w-20 h-20 mb-6 object-cover object-center rounded-full inline-block border-4 border-pink-500 shadow-lg transition-transform duration-300 hover:scale-110"
+                                        src={testimonial.image}
+                                    />
+                                    
+                                    {/* Star Rating */}
+                                    <div className="flex justify-center mb-4">
+                                        {renderStars(testimonial.rating)}
+                                    </div>
+                                    
+                                    <p className="leading-relaxed text-gray-300 mb-6 text-sm lg:text-base">
+                                        {testimonial.review}
+                                    </p>
+                                    
+                                    <span className="inline-block h-1 w-10 rounded bg-gradient-to-r from-pink-600 to-orange-500 mb-4" />
+                                    
+                                    <h2 className="font-medium title-font tracking-wider text-sm uppercase text-pink-400 mb-1">
+                                        {testimonial.name}
+                                    </h2>
+                                    
+                                    <p className="text-gray-400 text-sm">
+                                        {testimonial.role}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-
-                        <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
-                            <div className="h-full text-center">
-                                <img
-                                    alt="testimonial"
-                                    className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                                    src="https://cdn-icons-png.flaticon.com/128/2763/2763444.png"
-                                />
-                                <p className="leading-relaxed">
-                                    Impressive cattle-selling website, seamlessly crafted with React. 
-                                    Intuitive UI, responsive design, and efficient data handling. 
-                                    Clean codebase ensures optimal performance. 
-                                    Suggest incorporating dynamic features for enhanced user engagement and real-time updates.
-                                </p>
-                                <span className="inline-block h-1 w-10 rounded bg-pink-500 mt-6 mb-4" />
-                                <h2
-                                    style={{ color: mode === 'dark' ? '#ff4162' : '#ff4162' }}
-                                    className="font-medium title-font tracking-wider text-sm uppercase"
-                                >
-                                    Rajeshwari
-                                </h2>
-                                <p style={{ color: mode === 'dark' ? 'white' : 'gray' }} className="text-gray-500">
-                                    UI Developer
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="lg:w-1/3 lg:mb-0 p-4">
-                            <div className="h-full text-center">
-                                <img
-                                    alt="testimonial"
-                                    className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                                    src="https://media.istockphoto.com/id/1453962739/photo/the-middle-aged-indian-farmer-is-smiling-while-showing-his-monthly-income-indian-model.jpg?s=612x612&w=0&k=20&c=YdevYcNxwoQB1efBaOzATJywHHarzzpXAQ7Sd_fTniY="
-                                />
-                                <p  className="leading-relaxed">
-                                    Exceptional React-powered cattle website delivering prime livestock and stellar service. 
-                                    Intuitive UI, responsive design, and efficient code. 
-                                    Elevate user trust with dynamic features. 
-                                    A top-tier platform for premium cattle and excellence in service.
-                                </p>
-                                <span className="inline-block h-1 w-10 rounded bg-pink-500 mt-6 mb-4" />
-                                <h2
-                                    style={{ color: mode === 'dark' ? '#ff4162' : '#ff4162' }}
-                                    className="font-medium title-font tracking-wider text-sm uppercase"
-                                >
-                                    Rajesh Bhau
-                                </h2>
-                                <p style={{ color: mode === 'dark' ? 'white' : 'gray' }} className="text-gray-500">
-                                    Farmer
-                                </p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>

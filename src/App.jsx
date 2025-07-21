@@ -21,7 +21,8 @@ import UpdateProduct from './pages/admin/page/UpdateProduct';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Allproducts from './pages/allproducts/Allproducts';
-import Contact from './pages/Contact/contact'
+import Contact from './pages/Contact/contact';
+import Testimonial from './components/testimonial/Testimonial';
 function App() {
   return (
     <MyState>
@@ -33,6 +34,7 @@ function App() {
           <Route path="/blogs" element={<Blog/>} />
           <Route path="/cow/:id" element={<Blogdetails/>} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/testimonial" element={<Testimonial />} />
           <Route path="/dashboard" element={
             <ProtectedRouteForAdmin>
               <Dashboard />

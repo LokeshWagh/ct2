@@ -1,8 +1,6 @@
 import React, { Fragment, useContext, useState } from 'react';
 import myContext from '../../context/data/myContext';
 import image from '../../Video/ind-r.jpg';
-import { BsFillCloudSunFill } from 'react-icons/bs';
-import { FiSun } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 import { Dialog, Transition } from '@headlessui/react';
 import { RxCross2 } from 'react-icons/rx';
@@ -11,7 +9,6 @@ import { useSelector } from 'react-redux';
 function Navbar() {
   const navigate = useNavigate();
   const context = useContext(myContext);
-  const { mode, toggleMode } = context;
   const [open, setOpen] = useState(false);
   const user = JSON.parse(localStorage.getItem('user'));
   const cartItems = useSelector((state) => state.cart);
@@ -226,17 +223,6 @@ function Navbar() {
                     alt="Lokesh"
                   />
                 </a>
-              </div>
-
-              {/* Shared: Mode toggle button (functionality remains but no color change) */}
-              <div className="flex lg:ml-6">
-                <button onClick={toggleMode}>
-                  {mode === 'light' ? (
-                    <FiSun size={30} color="#FFD700" />
-                  ) : (
-                    <BsFillCloudSunFill size={30} color="#FFD700" />
-                  )}
-                </button>
               </div>
 
               {/* Shared: Cart link */}

@@ -6,7 +6,7 @@ function AddProduct() {
     const { products, setProducts, addProduct } = context;
     return (
         <div>
-            <div className='flex justify-center items-center h-screen'>
+            <div className='flex justify-center items-center h-screen bg-black'>
                 <div className=' bg-gray-800 px-10 py-10 rounded-xl '>
                     <div className="">
                         <h1 className='text-center text-white text-xl mb-4 font-bold'>Add Cattle </h1>
