@@ -1,9 +1,9 @@
 //Structure of the Env File
 
-VITE_API_KEY=
-VITE_AUTODOMAIN=
-VITE_PROJECTID=firstecom-xxx
-VITE_STORAGE=firstecom-xxx.appspot.com
-VITE_MESSAGE=xxxxxxxx
-VITE_APPID=1:xxxx
-VITE_CONTACT=https://sxxxxxx.firebaseio.com/saleContact.json
+// VITE_API_KEY=
+// VITE_AUTODOMAIN=
+// VITE_PROJECTID=firstecom-xxx
+// VITE_STORAGE=firstecom-xxx.appspot.com
+// VITE_MESSAGE=xxxxxxxx
+// VITE_APPID=1:xxxx
+// VITE_CONTACT=https://sxxxxxx.firebaseio.com/saleContact.json
